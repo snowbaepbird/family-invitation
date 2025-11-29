@@ -24,8 +24,15 @@ jobs:
         run: flutter pub get
       
       - name: Build web
-        run: flutter build web --release
-      
+        run: |
+          flutter build web --release --base-href "/"
+          # Create .nojekyll to prevent GitHub Pages from ignoring files starting with underscores
+          if [ "$RUNNER_OS" == "Windows" ]; then
+            echo $null >> build/web/.nojekyll
+          else
+            touch build/web/.nojekyll
+          fi
+
       - name: Deploy to Github Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

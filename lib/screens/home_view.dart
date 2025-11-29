@@ -85,12 +85,13 @@ class _HomeViewState extends State<HomeView> {
                         right: 0,
                         bottom: 0,
                         child: Container(
-                          padding: const EdgeInsets.all(16),
+                          width: double.infinity,
+                          padding: const EdgeInsets.fromLTRB(16, 50, 16, 16),
                           decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               begin: Alignment.bottomCenter,
                               end: Alignment.topCenter,
-                              colors: [Color(0x99000000), Color(0x00000000)],
+                              colors: [Color(0xff000000), Color(0x00000000)],
                             ),
                           ),
                           child: const Column(
