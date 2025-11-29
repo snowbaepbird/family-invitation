@@ -260,15 +260,19 @@ class LocationSection extends StatelessWidget {
             clientId: 's65fanh83m',
             initialLatitude: 37.570629,
             initialLongitude: 126.980532,
-            initialZoom: 13,
+            initialZoom: 10,
             places: [
               Place(
                 id: '1',
                 name: '일품진진수라 광화문점',
                 latitude: 37.570629,
                 longitude: 126.980532,
+                description: '일품진진수라 광화문점',
               ),
             ],
+            onMapReady: (NaverMap map) {
+              map.setZoom(10);
+            },
           ),
         ),
       ],
