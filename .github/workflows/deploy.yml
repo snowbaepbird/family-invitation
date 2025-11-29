@@ -25,7 +25,7 @@ jobs:
       
       - name: Build web
         run: |
-          flutter build web --release
+          flutter build web --release --base-href "/"
           # Create .nojekyll to prevent GitHub Pages from ignoring files starting with underscores
           if [ "$RUNNER_OS" == "Windows" ]; then
             echo $null >> build/web/.nojekyll
