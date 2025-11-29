@@ -525,7 +525,7 @@ class ProfileButtonsSection extends StatelessWidget {
                 '고향': '서울',
                 'MBTI': 'ISTJ',
                 '학력': '서울대학교 컴퓨터공학부 학사, 석사',
-                '직업': '자율주행 관련 개발자',
+                '직업': '자율주행 소프트웨어 개발자',
               }),
             ),
           ),
