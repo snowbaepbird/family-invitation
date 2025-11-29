@@ -34761,9 +34761,9 @@ return A.hg(A.vS(B.Q,s,B.x,B.eS),30,30)},
 $S:274}
 A.D2.prototype={
 N(a){var s="\uc77c\ud488\uc9c4\uc9c4\uc218\ub77c \uad11\ud654\ubb38\uc810"
-return A.d7(A.c([B.NW,B.cl,B.O5,B.ix,B.O3,B.vs,A.hg(new A.uq("s65fanh83m",37.570629,126.980532,10,new A.V2(),A.c([new A.mi("1",s,37.570629,126.980532,s)],t.qn),null),400,null)],t.D),B.K,B.z,B.G)}}
+return A.d7(A.c([B.NW,B.cl,B.O5,B.ix,B.O3,B.vs,A.hg(new A.uq("s65fanh83m",37.570629,126.980532,5,new A.V2(),A.c([new A.mi("1",s,37.570629,126.980532,s)],t.qn),null),400,null)],t.D),B.K,B.z,B.G)}}
 A.V2.prototype={
-$1(a){a.setZoom(10)},
+$1(a){a.setZoom(5)},
 $S:285}
 A.E1.prototype={
 N(a){var s=t.CR
@@ -34807,7 +34807,7 @@ return null},
 $S:0}
 A.ZE.prototype={
 $0(){var s=t.N
-return this.a.FL(this.b,"\ud55c\uc885\uc6b0","public/assets/jongwoo.jpg",A.at(["\ucd9c\uc0dd\ub144\ub3c4","1998","\uace0\ud5a5","\uc11c\uc6b8","MBTI","ISTJ","\ud559\ub825","\uc11c\uc6b8\ub300\ud559\uad50 \ucef4\ud4e8\ud130\uacf5\ud559\ubd80 \ud559\uc0ac, \uc11d\uc0ac","\uc9c1\uc5c5","\uc790\uc728\uc8fc\ud589 \uad00\ub828 \uac1c\ubc1c\uc790"],s,s))},
+return this.a.FL(this.b,"\ud55c\uc885\uc6b0","public/assets/jongwoo.jpg",A.at(["\ucd9c\uc0dd\ub144\ub3c4","1998","\uace0\ud5a5","\uc11c\uc6b8","MBTI","ISTJ","\ud559\ub825","\uc11c\uc6b8\ub300\ud559\uad50 \ucef4\ud4e8\ud130\uacf5\ud559\ubd80 \ud559\uc0ac, \uc11d\uc0ac","\uc9c1\uc5c5","\uc790\uc728\uc8fc\ud589 \uc18c\ud504\ud2b8\uc6e8\uc5b4 \uac1c\ubc1c\uc790"],s,s))},
 $S:0}
 A.ZF.prototype={
 $0(){var s=t.N
