@@ -12,9 +12,8 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
-  supabase_flutter: ^2.9.1
-  url_launcher: ^6.3.2
   add_2_calendar: ^3.0.1
+  flutter_naver_map_web: ^0.0.2
 
 dev_dependencies:
   flutter_test:

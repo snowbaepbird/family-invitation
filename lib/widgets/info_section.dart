@@ -2,7 +2,7 @@ import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:family_invitation/utils/calendar/calendar_helper.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_naver_map_web/flutter_naver_map_web.dart';
 
 class InfoSection extends StatelessWidget {
   const InfoSection({super.key});
@@ -226,13 +226,6 @@ class CalendarSection extends StatelessWidget {
 class LocationSection extends StatelessWidget {
   const LocationSection({super.key});
 
-  Future<void> _launchMap() async {
-    final Uri url = Uri.parse('https://naver.me/5XJEVYpw');
-    if (!await launchUrl(url)) {
-      throw Exception('Could not launch $url');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -261,96 +254,21 @@ class LocationSection extends StatelessWidget {
           style: TextStyle(fontSize: 14, color: Color(0xFF757575)),
         ),
         const SizedBox(height: 32),
-        GestureDetector(
-          onTap: _launchMap,
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 24),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(16),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withAlpha(10),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-              border: Border.all(color: const Color(0xFFEEEEEE)),
-            ),
-            clipBehavior: Clip.antiAlias,
-            child: Column(
-              children: [
-                AspectRatio(
-                  aspectRatio: 16 / 9,
-                  child: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      Image.asset(
-                        'lib/assets/map_sketch.png',
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
-                          return Container(
-                            color: const Color(0xFFF5F5F5),
-                            child: const Center(
-                              child: Icon(
-                                Icons.map_outlined,
-                                color: Color(0xFFBDBDBD),
-                                size: 40,
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                      Container(color: Colors.black.withAlpha(10)),
-                      Center(
-                        child: Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black12,
-                                blurRadius: 4,
-                                offset: Offset(0, 2),
-                              ),
-                            ],
-                          ),
-                          child: const Icon(
-                            Icons.location_on,
-                            color: Color(0xFFE57373),
-                            size: 24,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
-                  color: const Color(0xFFFAFAFA),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        '네이버 지도로 보기',
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: Color(0xFF616161),
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      SizedBox(width: 4),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        size: 10,
-                        color: Color(0xFF9E9E9E),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+        SizedBox(
+          height: 400, // 원하는 높이로 조절
+          child: NaverMapWeb(
+            clientId: 's65fanh83m',
+            initialLatitude: 37.570629,
+            initialLongitude: 126.980532,
+            initialZoom: 13,
+            places: [
+              Place(
+                id: '1',
+                name: '일품진진수라 광화문점',
+                latitude: 37.570629,
+                longitude: 126.980532,
+              ),
+            ],
           ),
         ),
       ],
@@ -367,7 +285,7 @@ class QnASection extends StatelessWidget {
       (q: '어디서 살기로 했나요?', a: '채은이 직장이 있는 영종도에서 살기로 했어요.'),
       (q: '언제부터 같이 사나요?', a: '26년 2월 말부터 같이 살아요.'),
       (q: '결혼식은 왜 안 하나요?', a: '채은이가 하고 싶지 않아했고 종우가 존중해줬어요.'),
-      (q: '웨딩 사진은 그래도 찍어야하지 않을까요?', a: '신혼여행 가서 스냅 사진을 찍을 계획이에요.'),
+      (q: '웨딩 사진은 찍나요?', a: '신혼여행 가서 스냅 사진을 찍을 계획이에요.'),
       (q: '신혼여행은 언제 어디로 가나요?', a: '26년 9월 말에 캐나다로 갈거예요.'),
     ];
 
@@ -564,7 +482,6 @@ class ProfileButtonsSection extends StatelessWidget {
                           vertical: 8,
                         ),
                         backgroundColor: const Color(0xFFF5F5F5),
-                        minimumSize: Size.zero,
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(6),
