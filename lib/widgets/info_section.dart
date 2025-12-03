@@ -260,7 +260,7 @@ class LocationSection extends StatelessWidget {
             clientId: 's65fanh83m',
             initialLatitude: 37.570629,
             initialLongitude: 126.980532,
-            initialZoom: 17,
+            initialZoom: 15,
             places: [
               Place(
                 id: '1',
