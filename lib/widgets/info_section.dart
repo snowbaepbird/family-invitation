@@ -3,6 +3,7 @@ import 'package:family_invitation/utils/calendar/calendar_helper.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_naver_map_web/flutter_naver_map_web.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class InfoSection extends StatelessWidget {
   const InfoSection({super.key});
@@ -274,6 +275,43 @@ class LocationSection extends StatelessWidget {
               map.setZoom(17);
             },
           ),
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: ElevatedButton.icon(
+                icon: Image.asset(
+                  'public/assets/navermap.png',
+                  height: 24,
+                  width: 24,
+                ),
+                label: const Text('네이버 맵'),
+                onPressed: () async {
+                  const url = 'https://naver.me/5A3pmHDy';
+                  if (!await launchUrl(Uri.parse(url))) {
+                    throw Exception('Could not launch $url');
+                  }
+                },
+              ),
+            ),
+            const SizedBox(width: 8),
+            Expanded(
+              child: ElevatedButton.icon(
+                icon: Image.asset(
+                  'public/assets/kakaomap.png',
+                  height: 24,
+                  width: 24,
+                ),
+                label: const Text('카카오 맵'),
+                onPressed: () async {
+                  const url = 'https://place.map.kakao.com/967729291';
+                  if (!await launchUrl(Uri.parse(url))) {
+                    throw Exception('Could not launch $url');
+                  }
+                },
+              ),
+            ),
+          ],
         ),
       ],
     );
