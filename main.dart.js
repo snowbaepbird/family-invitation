@@ -34874,9 +34874,9 @@ return A.fJ(A.vY(B.M,s,B.x,B.eS),30,30)},
 $S:274}
 A.D7.prototype={
 N(a){var s="\uc77c\ud488\uc9c4\uc9c4\uc218\ub77c \uad11\ud654\ubb38\uc810",r=null,q=t.p
-return A.d7(A.c([B.Od,B.cn,B.Oo,B.iy,B.Om,B.vz,A.fJ(new A.uw("s65fanh83m",37.570629,126.980532,15,new A.Vb(),A.c([new A.mk("1",s,37.570629,126.980532,s)],t.qn),r),200,r),A.hg(A.c([A.iB(A.afu(A.CD("public/assets/navermap.png",B.M,r,r,24,r,24),B.Oe,new A.Vc())),B.dr,A.iB(A.afu(A.CD("public/assets/kakaomap.png",B.M,r,r,24,r,24),B.Oc,new A.Vd()))],q),B.H,B.y,B.G)],q),B.H,B.y,B.G)}}
+return A.d7(A.c([B.Od,B.cn,B.Oo,B.iy,B.Om,B.vz,A.fJ(new A.uw("s65fanh83m",37.570629,126.980532,14,new A.Vb(),A.c([new A.mk("1",s,37.570629,126.980532,s)],t.qn),r),200,r),A.hg(A.c([A.iB(A.afu(A.CD("public/assets/navermap.png",B.M,r,r,24,r,24),B.Oe,new A.Vc())),B.dr,A.iB(A.afu(A.CD("public/assets/kakaomap.png",B.M,r,r,24,r,24),B.Oc,new A.Vd()))],q),B.H,B.y,B.G)],q),B.H,B.y,B.G)}}
 A.Vb.prototype={
-$1(a){a.setZoom(17)},
+$1(a){a.setZoom(14)},
 $S:285}
 A.Vc.prototype={
 $0(){var s=0,r=A.Q(t.H)
