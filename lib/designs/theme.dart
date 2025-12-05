@@ -53,5 +53,6 @@ final ButtonStyle mapButtonStyle = ElevatedButton.styleFrom(
   backgroundColor: Colors.white,
   foregroundColor: Colors.black,
   elevation: 3,
+  padding: const EdgeInsets.symmetric(horizontal: 0),
   side: const BorderSide(color: Color.fromARGB(255, 46, 142, 173), width: 1.5),
 );
