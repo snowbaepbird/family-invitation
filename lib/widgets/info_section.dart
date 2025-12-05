@@ -271,11 +271,9 @@ class LocationSection extends StatelessWidget {
                 description: '일품진진수라 광화문점',
               ),
             ],
-            onMapReady: (NaverMap map) {
-              map.setZoom(14);
-            },
           ),
         ),
+        const SizedBox(height: 8),
         Row(
           children: [
             Expanded(
