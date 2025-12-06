@@ -49,10 +49,17 @@ final ThemeData darkModeTheme = ThemeData(
 );
 
 final ButtonStyle mapButtonStyle = ElevatedButton.styleFrom(
-  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-  backgroundColor: Colors.white,
-  foregroundColor: Colors.black,
-  elevation: 3,
-  padding: const EdgeInsets.symmetric(horizontal: 0),
-  side: const BorderSide(color: Color.fromARGB(255, 46, 142, 173), width: 1.5),
+  backgroundColor: const Color(0xFFFAFAFA),
+  foregroundColor: const Color(0xFF616161),
+  elevation: 0,
+  padding: const EdgeInsets.symmetric(vertical: 12),
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(12),
+    side: const BorderSide(color: Color(0xFFEEEEEE)),
+  ),
+  textStyle: const TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    fontFamily: 'NanumGothic',
+  ),
 );

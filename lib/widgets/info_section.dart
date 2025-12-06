@@ -1,6 +1,4 @@
-import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:family_invitation/designs/theme.dart';
-import 'package:family_invitation/utils/calendar/calendar_helper.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_naver_map_web/flutter_naver_map_web.dart';
@@ -40,38 +38,6 @@ class InfoSection extends StatelessWidget {
 class CalendarSection extends StatelessWidget {
   const CalendarSection({super.key});
 
-  Future<void> _addToCalendar() async {
-    if (kIsWeb) {
-      const String icsContent =
-          'BEGIN:VCALENDAR\n'
-          'VERSION:2.0\n'
-          'PRODID:-//Family Invitation//KR\n'
-          'BEGIN:VEVENT\n'
-          'UID:family-invitation-20260110\n'
-          'DTSTAMP:20251128T000000\n'
-          'DTSTART:20260110T120000\n'
-          'DTEND:20260110T140000\n'
-          'SUMMARY:가족 식사\n'
-          'DESCRIPTION:소중한 가족분들과의 식사 자리입니다.\n'
-          'LOCATION:일품진진수라 광화문점\n'
-          'END:VEVENT\n'
-          'END:VCALENDAR';
-
-      downloadIcsFile(icsContent);
-    } else {
-      final Event event = Event(
-        title: '가족 식사',
-        description: '소중한 가족분들과의 식사 자리입니다.',
-        location: '일품진진수라 광화문점',
-        startDate: DateTime(2026, 1, 10, 12, 0),
-        endDate: DateTime(2026, 1, 10, 14, 0),
-        iosParams: const IOSParams(reminder: Duration(minutes: 60)),
-        androidParams: const AndroidParams(emailInvites: []),
-      );
-      Add2Calendar.addEvent2Cal(event);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -87,45 +53,22 @@ class CalendarSection extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         const Text(
-          '2026년 1월 10일 토요일 12시',
+          '26년 1월 10일 토요일 낮 12시',
           style: TextStyle(
             fontFamily: 'MemomentKkukkukk',
-            fontSize: 24,
+            fontSize: 22,
             color: Color(0xFF5D5D5D),
           ),
         ),
         const SizedBox(height: 32),
-        GestureDetector(
-          onTap: _addToCalendar,
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              children: [
-                _buildCalendarHeader(),
-                const SizedBox(height: 16),
-                _buildCalendarGrid(),
-              ],
-            ),
-          ),
-        ),
-        const SizedBox(height: 24),
-        TextButton.icon(
-          onPressed: _addToCalendar,
-          icon: const Icon(
-            Icons.calendar_today_outlined,
-            size: 16,
-            color: Color(0xFF8E8E8E),
-          ),
-          label: const Text(
-            '캘린더에 일정 추가하기',
-            style: TextStyle(color: Color(0xFF8E8E8E), fontSize: 13),
-          ),
-          style: TextButton.styleFrom(
-            backgroundColor: const Color(0xFFF5F5F5),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            children: [
+              _buildCalendarHeader(),
+              const SizedBox(height: 16),
+              _buildCalendarGrid(),
+            ],
           ),
         ),
       ],
@@ -203,7 +146,7 @@ class CalendarSection extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: isTarget
-                            ? const Color(0xFF7B1FA2)
+                            ? const Color.fromARGB(255, 211, 111, 169)
                             : (isSunday
                                   ? const Color(0xFFE57373)
                                   : const Color(0xFF424242)),
@@ -274,7 +217,7 @@ class LocationSection extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 24),
         Row(
           children: [
             Expanded(
@@ -343,10 +286,9 @@ class QnASection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final qnaList = [
-      (q: '어떻게 만나게 되었나요?', a: '소개팅으로 만나게 되었어요.'),
-      (q: '어디서 살기로 했나요?', a: '채은이 직장이 있는 영종도에서 살기로 했어요.'),
-      (q: '언제부터 같이 사나요?', a: '26년 2월 말부터 같이 살아요.'),
+      (q: '둘은 언제 어떻게 처음 만나게 되었나요?', a: '24년 여름에 소개팅으로 처음 만났어요.'),
       (q: '결혼식은 왜 안 하나요?', a: '채은이가 하고 싶지 않아했고 종우가 존중해줬어요.'),
+      (q: '언제부터 어디에서 살기로 했나요?', a: '26년 2월 말부터 영종도에서 살기로 했어요.'),
       (q: '웨딩 사진은 찍나요?', a: '신혼여행 가서 스냅 사진을 찍을 계획이에요.'),
       (q: '신혼여행은 언제 어디로 가나요?', a: '26년 9월 말에 캐나다로 갈거예요.'),
     ];
@@ -570,39 +512,58 @@ class ProfileButtonsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Row(
-        children: [
-          Expanded(
-            child: _buildButton(
-              context,
-              '종우에 대해\n알아보기',
-              () => _showProfile(context, '한종우', 'public/assets/jongwoo.jpg', {
-                '출생년도': '1998',
-                '고향': '서울',
-                'MBTI': 'ISTJ',
-                '학력': '서울대학교 컴퓨터공학부 학사, 석사',
-                '직업': '자율주행 소프트웨어 개발자',
-              }),
-            ),
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Row(
+            children: [
+              Expanded(
+                child: _buildButton(
+                  context,
+                  '종우에 대해\n알아보기',
+                  () => _showProfile(
+                    context,
+                    '한종우',
+                    'public/assets/jongwoo.jpg',
+                    {
+                      '출생년도': '1998',
+                      '고향': '서울',
+                      'MBTI': 'ISTJ',
+                      '학력': '서울대학교 컴퓨터공학부 학사, 석사',
+                      '직업': '자율주행 소프트웨어 개발자',
+                    },
+                  ),
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: _buildButton(
+                  context,
+                  '채은이에 대해\n알아보기',
+                  () => _showProfile(
+                    context,
+                    '한채은',
+                    'public/assets/chaeeun.jpg',
+                    {
+                      '출생년도': '1998',
+                      '고향': '서울',
+                      'MBTI': 'ISFJ',
+                      '학력': '연세대학교 컴퓨터과학과 학사',
+                      '직업': '인천국제공항공사 전산직',
+                    },
+                  ),
+                ),
+              ),
+            ],
           ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: _buildButton(
-              context,
-              '채은이에 대해\n알아보기',
-              () => _showProfile(context, '한채은', 'public/assets/chaeeun.jpg', {
-                '출생년도': '1998',
-                '고향': '서울',
-                'MBTI': 'ISFJ',
-                '학력': '연세대학교 컴퓨터과학과 학사',
-                '직업': '인천국제공항공사 전산직',
-              }),
-            ),
-          ),
-        ],
-      ),
+        ),
+        const SizedBox(height: 48),
+        const Text(
+          '@madeby 종우♡채은',
+          style: TextStyle(fontSize: 10, color: Color(0xFFBDBDBD)),
+        ),
+      ],
     );
   }
 

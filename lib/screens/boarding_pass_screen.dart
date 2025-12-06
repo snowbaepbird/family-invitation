@@ -236,7 +236,10 @@ class _BoardingPassScreenState extends State<BoardingPassScreen> {
 
                             // Passenger Info
                             Padding(
-                              padding: const EdgeInsets.all(30),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 35,
+                                vertical: 30,
+                              ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -302,7 +305,7 @@ class _BoardingPassScreenState extends State<BoardingPassScreen> {
                                             CrossAxisAlignment.start,
                                         children: makeElementText(
                                           "DATE",
-                                          "0110",
+                                          "01/10",
                                           16,
                                         ),
                                       ),
